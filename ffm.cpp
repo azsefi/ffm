@@ -37,8 +37,6 @@ public:
 		default_random_engine generator;
 		normal_distribution<float> distribution(0.0, 0.5);
 
-		//lw       = new float**[nfeat];
-		//lgradacc = new float**[nfeat];
 		lw = malloc_aligned_float((long)nfeat*nfield*k);
 		lgradacc = malloc_aligned_float((long)nfeat*nfield*k);
 
@@ -47,12 +45,8 @@ public:
 
 		for (auto f = 0; f < nfeat; f++) {
 
-			//lw[f]       = new float*[nfield];
-			//lgradacc[f] = new float*[nfield];
 			for (auto c = 0; c < nfield; c++) {
 
-				//lw[f][c]       = new float[k];
-				//lgradacc[f][c] = new float[k];
 				for (auto w = 0; w < k; w++, ww++, lgr++) {
 					*ww = distribution(generator);
 					*lgr = 1;
@@ -294,35 +288,4 @@ private:
 	float L2;
 
 
-};
-
-int main()
-{
-	int k=8;
-	char* trpath = "C:\\Users\\srasulov\\Desktop\\face\\outbrain\\input_data\\valdata\\ffmtrain.txt";
-	char* valpath = "C:\\Users\\srasulov\\Desktop\\face\\outbrain\\input_data\\valdata\\ffmtest.txt";
-	
-	FFM ffm = FFM(k, 0.0001, 0.1);
-	ffm.fit(trpath, valpath, 15, 3000000);
-
-	cin;
 }
-
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-A
-
